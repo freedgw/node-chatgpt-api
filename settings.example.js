@@ -6,59 +6,16 @@ export default {
     // If set, `ChatGPTClient` and `BingAIClient` will use `keyv-file` to store conversations to this JSON file instead of in memory.
     // However, `cacheOptions.store` will override this if set
     storageFilePath: process.env.STORAGE_FILE_PATH || './cache.json',
-    chatGptClient: {
-        // Your OpenAI API key (for `ChatGPTClient`)
-        openaiApiKey: process.env.OPENAI_API_KEY || '',
-        // (Optional) Support for a reverse proxy for the completions endpoint (private API server).
-        // Warning: This will expose your `openaiApiKey` to a third party. Consider the risks before using this.
-        // reverseProxyUrl: 'https://chatgpt.hato.ai/completions',
-        // (Optional) Parameters as described in https://platform.openai.com/docs/api-reference/completions
-        modelOptions: {
-            // You can override the model name and any other parameters here.
-            // The default model is `gpt-3.5-turbo`.
-            model: 'gpt-3.5-turbo',
-            // Set max_tokens here to override the default max_tokens of 1000 for the completion.
-            // max_tokens: 1000,
-        },
-        // (Optional) Davinci models have a max context length of 4097 tokens, but you may need to change this for other models.
-        // maxContextTokens: 4097,
-        // (Optional) You might want to lower this to save money if using a paid model like `text-davinci-003`.
-        // Earlier messages will be dropped until the prompt is within the limit.
-        // maxPromptTokens: 3097,
-        // (Optional) Set custom instructions instead of "You are ChatGPT...".
-        // (Optional) Set a custom name for the user
-        // userLabel: 'User',
-        // (Optional) Set a custom name for ChatGPT ("ChatGPT" by default)
-        // chatGptLabel: 'Bob',
-        // promptPrefix: 'You are Bob, a cowboy in Western times...',
-        // A proxy string like "http://<ip>:<port>"
-        proxy: '',
-        // (Optional) Set to true to enable `console.debug()` logging
-        debug: false,
-    },
     // Options for the Bing client
     bingAiClient: {
         // Necessary for some people in different countries, e.g. China (https://cn.bing.com)
-        host: '',
+        host: 'https://www.bing.com',
         // The "_U" cookie value from bing.com
         userToken: '',
         // If the above doesn't work, provide all your cookies as a string instead
-        cookies: '',
+        //cookies: '',
         // A proxy string like "http://<ip>:<port>"
-        proxy: '',
-        // (Optional) Set to true to enable `console.debug()` logging
-        debug: false,
-    },
-    chatGptBrowserClient: {
-        // (Optional) Support for a reverse proxy for the conversation endpoint (private API server).
-        // Warning: This will expose your access token to a third party. Consider the risks before using this.
-        reverseProxyUrl: 'https://bypass.churchless.tech/api/conversation',
-        // Access token from https://chat.openai.com/api/auth/session
-        accessToken: '',
-        // Cookies from chat.openai.com (likely not required if using reverse proxy server).
-        cookies: '',
-        // A proxy string like "http://<ip>:<port>"
-        proxy: '',
+        //proxy: '',
         // (Optional) Set to true to enable `console.debug()` logging
         debug: false,
     },
@@ -69,7 +26,7 @@ export default {
         // (Optional) Set to true to enable `console.debug()` logging
         debug: false,
         // (Optional) Possible options: "chatgpt", "chatgpt-browser", "bing". (Default: "chatgpt")
-        clientToUse: 'chatgpt',
+        clientToUse: 'bing',
         // (Optional) Generate titles for each conversation for clients that support it (only ChatGPTClient for now).
         // This will be returned as a `title` property in the first response of the conversation.
         generateTitles: false,
@@ -98,6 +55,6 @@ export default {
     // Options for the CLI app
     cliOptions: {
         // (Optional) Possible options: "chatgpt", "bing".
-        // clientToUse: 'bing',
+        clientToUse: 'bing',
     },
 };
